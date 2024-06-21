@@ -15,13 +15,12 @@ jobs:
       
     - name: Install dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install autotools-dev autoconf automake libtool
+        sudo apt-get wget
+        wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.20.tar.gz
+        tar xf libsodium-1.0.20.tar.gz
+        
     - name: Build source
       run: |
-        mkdir build-aux 
-        aclocal
-        autoconf
-        automake --add-missing
-        ./configure
-        make
+       cd libsodium-1.0.20
+       ./configure
+       make && make check
