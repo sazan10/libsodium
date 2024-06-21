@@ -19,6 +19,7 @@ jobs:
         sudo apt-get install autotools-dev autoconf automake libtool
     - name: Build source
       run: |
+        mkdir build-aux 
         aclocal
         autoconf
         automake --add-missing
